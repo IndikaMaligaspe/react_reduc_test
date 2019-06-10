@@ -5,6 +5,7 @@ import debounce from 'lodash.debounce'
 
 import ProductSearch from './ProductSearch'
 import ProductGrid from './ProductGrid'
+import ProductType from './ProductTypes'
 
 class FilterableProducts extends React.Component{
     constructor(props) {
@@ -26,6 +27,7 @@ class FilterableProducts extends React.Component{
    render(){
        return(
         <div>	
+            <ProductType />
 	        <ProductSearch 
                 filterText = {this.props.filterText}
                 inStockOnly = {this.props.inStockOnly}

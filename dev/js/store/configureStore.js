@@ -8,6 +8,7 @@ const PRODUCTS = [
 var defaultState = {
     filterText : '',
     inStockOnly: false,
+    productType: goods, 
     propertyData: PRODUCTS
 }
 
@@ -22,6 +23,11 @@ function action(state=defaultState ,  action){
             ...state ,
             inStockOnly: action.data.newInStockOnly
         }
+    }else if(action.type === 'CHANGE_PRODUCT_TYPE'){
+            return {
+                ...state ,
+                productType: action.data.newProductType
+            }    
     }else if(action.type === 'RESPONSE_LOAD_DATA'){
         return {
             ...state ,
