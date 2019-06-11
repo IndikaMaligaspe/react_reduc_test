@@ -10,10 +10,9 @@ import ProductType from './ProductTypes'
 class FilterableProducts extends React.Component{
     constructor(props) {
         super(props);
-        console.log('this.props.propertyData - ',this.props.propertyData);
         this.handleFilterTextChange = this.handleFilterTextChange.bind(this);
         this.handleInStockChange = this.handleInStockChange.bind(this);
-        
+        this.handleProductType = this.handleProductType.bind(this);
     }
 
      handleFilterTextChange(filterText){
@@ -24,10 +23,25 @@ class FilterableProducts extends React.Component{
         this.props.dispatch({type:"CHANGE_IS_INSTOCK" , data:{ newInStockOnly: inStockOnly }});
     }
 
+    handleProductType(productType){
+        var api = '/api/productlist';
+        this.props.dispatch({type:"CHANGE_PRODUCT_TYPE", data:{ newProductType: productType }});
+        if(productType === 'pets'){
+            api = '/api/petlist';
+        }
+        axios.get(api)
+       .then(resp=> 
+           this.props.dispatch({type:"RESPONSE_LOAD_DATA", data:{ newPropertyData:resp.data }}) ,
+       )
+    }
+
    render(){
        return(
         <div>	
-            <ProductType />
+            <ProductType 
+                productType = {this.props.productType}
+                onProductTypeChange={this.handleProductType}
+            />
 	        <ProductSearch 
                 filterText = {this.props.filterText}
                 inStockOnly = {this.props.inStockOnly}
@@ -49,6 +63,7 @@ export default connect((state , props) =>{
     return {
         filterText : state.filterText ,
         inStockOnly : state.inStockOnly ,
+        productType : state.productType,
         propertyData : state.propertyData
     }
 })(FilterableProducts)

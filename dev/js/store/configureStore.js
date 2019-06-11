@@ -8,7 +8,7 @@ const PRODUCTS = [
 var defaultState = {
     filterText : '',
     inStockOnly: false,
-    productType: goods, 
+    productType: 'goods', 
     propertyData: PRODUCTS
 }
 

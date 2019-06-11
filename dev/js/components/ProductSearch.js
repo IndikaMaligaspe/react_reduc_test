@@ -5,7 +5,6 @@ class ProductSearch extends React.Component {
 		super(props);
 		this.handleFilterTextChange = this.handleFilterTextChange.bind(this);
 		this.handleInStockChange = this.handleInStockChange.bind(this);
-
 	}
 
 	handleFilterTextChange(e){
