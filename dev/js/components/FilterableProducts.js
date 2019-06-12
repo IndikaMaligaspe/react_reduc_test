@@ -6,6 +6,7 @@ import debounce from 'lodash.debounce'
 import ProductSearch from './ProductSearch'
 import ProductGrid from './ProductGrid'
 import ProductType from './ProductTypes'
+import * as actions from '../actions/actions'
 
 class FilterableProducts extends React.Component{
     constructor(props) {
@@ -24,15 +25,8 @@ class FilterableProducts extends React.Component{
     }
 
     handleProductType(productType){
-        var api = '/api/productlist';
         this.props.dispatch({type:"CHANGE_PRODUCT_TYPE", data:{ newProductType: productType }});
-        if(productType === 'pets'){
-            api = '/api/petlist';
-        }
-        axios.get(api)
-       .then(resp=> 
-           this.props.dispatch({type:"RESPONSE_LOAD_DATA", data:{ newPropertyData:resp.data }}) ,
-       )
+        this.props.dispatch(actions.getProductlist(productType))
     }
 
    render(){

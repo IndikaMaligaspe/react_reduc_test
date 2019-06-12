@@ -2,9 +2,12 @@ import React from "react"
 import { render } from "react-dom"
 import { Provider} from 'react-redux'
 import axios from 'axios'
+import "babel-polyfill";
 
 import FilterableProducts from './components/FilterableProducts'
 import store from './store/configureStore'
+
+import * as actions from './actions/actions'
 
 class MainComponent extends React.Component{     
     constructor(props){
@@ -13,16 +16,8 @@ class MainComponent extends React.Component{
     }   
 
     handleAjaxOnLoad(resp){
-      this._makeLoadPropsAjaxCall();
+        store.dispatch(actions.getProductlist(store.getState().propertyData))
    }
-
-    _makeLoadPropsAjaxCall(){
-       axios.get('/api/productlist')
-       .then(resp=> 
-           store.dispatch({type:"RESPONSE_LOAD_DATA", data:{ newPropertyData:resp.data }}) ,
-       )
-   }
-
     render() {
            return ( <Provider store={store}><div>	
               <FilterableProducts/>
