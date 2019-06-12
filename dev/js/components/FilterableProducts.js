@@ -8,6 +8,8 @@ import ProductGrid from './ProductGrid'
 import ProductType from './ProductTypes'
 import * as actions from '../actions/actions'
 
+
+
 class FilterableProducts extends React.Component{
     constructor(props) {
         super(props);
@@ -55,9 +57,9 @@ class FilterableProducts extends React.Component{
 
 export default connect((state , props) =>{
     return {
-        filterText : state.filterText ,
-        inStockOnly : state.inStockOnly ,
-        productType : state.productType,
-        propertyData : state.propertyData
+        filterText : state.filter.filterText ,
+        inStockOnly : state.filter.inStockOnly ,
+        productType : state.product.productType,
+        propertyData : state.product.propertyData
     }
 })(FilterableProducts)
