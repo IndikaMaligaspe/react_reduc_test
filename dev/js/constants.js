@@ -8,4 +8,4 @@ export var ActionTypes = keyMirror({
 
 })
 
-// console.log('ActionTypes',ActionTypes);
+console.log('ActionTypes',ActionTypes);
