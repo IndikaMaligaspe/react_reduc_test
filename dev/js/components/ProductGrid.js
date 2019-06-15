@@ -1,5 +1,7 @@
 import React from "react"
 
+import styles from '../../styles/ProductGrid-styles.js'
+
 class ProductGrid extends React.Component {
    render(){
     
@@ -44,8 +46,8 @@ class ProductGrid extends React.Component {
      });
     
      return (
-      <div>	     
-        <table border="1">
+      <div style={styles.mainDiv}>	     
+        <table style={styles.mainTable}>
           <ProductGridHeader />
           <tbody>  
             {rows}
@@ -61,7 +63,8 @@ class ProductGridHeader extends React.Component{
     return(
         <thead>
           <tr>
-             <td>Name</td><td>Price</td>
+             <td style={styles.tdHeading}>&nbsp;Name</td>
+             <td style={styles.tdHeading}>&nbsp;Price</td>
           </tr>
         </thead>
 
@@ -74,7 +77,8 @@ class ProductGridCategory extends React.Component{
     const category = this.props.category;
     return(
       <tr>
-        <td colSpan="2"> {category} </td><td></td>
+        <td style={{...styles.td , ...styles.category}} colSpan="2"> &nbsp;{category} </td>
+        <td ></td>
       </tr>  
     );
   }
@@ -85,7 +89,8 @@ class ProductGridRow extends React.Component {
      const product = this.props.product;
      return(
       <tr>
-        <td>{product.name}</td><td>{product.price}</td>
+        <td style={styles.td}>&nbsp;&nbsp;{product.name}</td>
+        <td style={styles.td}>&nbsp;&nbsp;{product.price}</td>
       </tr>
      );
   }

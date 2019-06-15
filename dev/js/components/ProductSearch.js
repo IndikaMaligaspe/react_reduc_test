@@ -1,4 +1,5 @@
 import React from "react"
+import styles from '../../styles/productSearch.js'
 
 class ProductSearch extends React.Component {
 	constructor(props){
@@ -20,14 +21,18 @@ class ProductSearch extends React.Component {
 	  const inStockOnly = this.props.inStockOnly;
 
     return (
-      <div>
+      <div style={styles.mainDiv}>
 	  <form>  
-	    <input type="text" id="search" placeholder="search" value={filterText} onChange={this.handleFilterTextChange}/>
-	    <p>
-	      <input type="checkbox" checked={inStockOnly} onChange={this.handleInStockChange}/> 
-	      {' '}
-	       Only show products in stock
-	    </p>
+	  	<ul style={styles.ul}>
+		  <li><input  type="text" id="search" placeholder="search" 
+				value={filterText} onChange={this.handleFilterTextChange}/>
+		  </li>
+		  <li><input type="checkbox" checked={inStockOnly} 
+		  	onChange={this.handleInStockChange}/> 
+	      	{' '}
+	       	Only show products in stock
+		   </li>
+		</ul>
 	  </form>  
 
       </div>

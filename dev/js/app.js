@@ -9,6 +9,8 @@ import store from './store/configureStore'
 
 import * as actions from './actions/actions'
 
+import styles from  '../styles/main-styles.js'
+
 class MainComponent extends React.Component{     
     constructor(props){
         super(props);
@@ -26,7 +28,9 @@ class MainComponent extends React.Component{
 }
 
 render (
-        <div><MainComponent / ></div>
+        <div>
+            <h1 style={styles.title}>Indika's React & Redux Store</h1>
+            <MainComponent / ></div>
 	, document.getElementById("app"));
 
 
